@@ -71,7 +71,7 @@ export default function Login() {
            </nav>
 
            
-            <p>abcd</p>
+            
             
 
 

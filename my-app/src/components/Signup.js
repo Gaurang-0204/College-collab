@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { auth } from "d:/react/college-collab1/my-app/src/config/firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -19,6 +20,7 @@ export default function Signup() {
       setLoading(true);
 
       try {
+        // Use `createUserWithEmailAndPassword` to create a new user
         await createUserWithEmailAndPassword(auth, email, password);
         navigate("/");
       } catch (error) {
@@ -27,31 +29,62 @@ export default function Signup() {
 
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div>
-      <h4>{error}</h4>
-      <input
-        placeholder="Enter your email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br />
-      <input
-        placeholder="Enter your password"
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br />
-      <input
-        placeholder="Confirm your password"
-        type="password"
-        onChange={(e) => setConfirmPassword(e.target.value)}
-      />
-      <br />
-      <button disabled={loading} onClick={signUp}>
-        Sign up
-      </button>
+      <header className="showcase">
+        <div className="showcase-content">
+          <div className="formm">
+            <div className="btn">
+              <h4>{error}</h4>
+            </div>
+            <form>
+              <h1>Sign Up</h1>
+              <div className="info">
+                <input
+                  className="email"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <br />
+                <input
+                  className="email"
+                  type="password"
+                  name="Password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <input
+                  className="email"
+                  type="password"
+                  name="Password"
+                  placeholder="Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                
+              </div>
+              <div className="btn">
+                <button
+                  disabled={loading}
+                  onClick={signUp}
+                  className="btn-primary"
+                >
+                  Sign up
+                </button>
+              </div>
+              <div className="help"></div>
+            </form>
+          </div>
+        </div>
+      </header>
     </div>
   );
-};
+}
+
+

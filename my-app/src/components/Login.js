@@ -1,83 +1,93 @@
-// importing the firebase tools from the config folder 
-import { auth,googleProvider } from "../config/firebase";
-
-// importing the firebase authentication methods 
-
-import { signInWithEmailAndPassword,signInWithPopup,  } from "firebase/auth";
-
-//importing useState from react 
-
-import {useState} from "react"
-
-//creating an login function with functionalities of signing withgoogle signup and signin and logout
-
+// Import the necessary libraries and modules
+import React, { useState, } from "react";
 import { Link } from "react-router-dom";
+import { auth, googleProvider } from "../config/firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import "./Login.css"
 
-
-
+// Import statements and other code...
 
 export default function Login() {
-   
-    //Using useState of react to set the password entered by the user 
-   
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-   //signup function to create a new user with firebase method and handling the errors
-   
-    
-
-    //Below all are the same functions as above using the firebase methods to perform the actions 
-
-    const signIn = async () =>{
-        try{
-             signInWithEmailAndPassword(auth,email,password)
-        }catch(err){
-            console.error(err);
-        }
-
+  // Implement your login logic here
+  const signIn = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      console.error(err);
     }
+  };
 
-    const signInWithGoogle = async () =>{
-        try{
-        signInWithPopup(auth,googleProvider)
-        }catch(err){
-            console.error(err);        }
-    
-    
-    };
-    
+  const signInWithGoogle = async () => {
+    try {
+      console.log("Attempting Google Sign-In...");
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      console.log("Google Sign-In Success:", user);
+    } catch (err) {
+      console.error("Google Sign-In Error:", err.message, err.code);
+    }
+  };
+  
+  
 
-    // return functions displays a login form with eventlisteners and buttons 
+   ; // Make sure to import `useEffect` from React
 
-      
-    return (
-        <div>
-           
-            <input placeholder="Enter your email"
-            onChange={(e) => setEmail(e.target.value)}/> <br/>
-        
-            <input placeholder="Enter your password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}/><br/>
-           
-           <button onClick={signIn}> Sign in </button><br/>
+  // ... rest of the code ...
 
-           <button onClick={signInWithGoogle}>Sign In with Google</button><br/>
-           <nav>
+  // Add this code to handle the redirect result
+   // Make sure to import `useEffect` from React
+  
 
-           <p>Dont have an account<Link to="/Signup">Signup</Link> </p>
+  
 
-           </nav>
-
-           
-            
-            
-
-
-
-            
-            
+  return (
+    <div id="root">
+      <header className="showcase">
+        <div className="showcase-content">
+          <div className="formm">
+            <form>
+              <h1>Sign In</h1>
+              <div className="info">
+                <input
+                  className="email"
+                  type="email"
+                  name="email"
+                  placeholder="Email or phone number"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <br />
+                <input
+                  className="email"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className="btn">
+                <button onClick={signIn} className="btn-primary">
+                  Sign In
+                </button>
+              </div>
+              <div className="btn">
+                <button onClick={signInWithGoogle} className="btn-primary">
+                  Sign In with Google
+                </button>
+              </div>
+            </form>
+          </div>
+          <div className="signup">
+            <p>New to College Collab</p>
+            <Link to="/Signup">Sign up now</Link>
+          </div>
         </div>
-    )
+      </header>
+    </div>
+  );
 }
+

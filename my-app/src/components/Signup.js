@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "d:/react/college-collab1/my-app/src/config/firebase";
+import { auth } from "../config/firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";

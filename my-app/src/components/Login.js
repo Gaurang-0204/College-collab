@@ -1,20 +1,20 @@
-// Import the necessary libraries and modules
-import React, { useState, } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link,useNavigate} from "react-router-dom";
 import { auth, googleProvider } from "../config/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import "./Login.css"
-
-// Import statements and other code...
+import "./Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let navigate = useNavigate();
 
-  // Implement your login logic here
-  const signIn = async () => {
+  const signIn = async (e) => {
+    e.preventDefault(); // Prevents the default form submission
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      // Use Link to navigate to "/Signup"
+      navigate("/HomePage")
     } catch (err) {
       console.error(err);
     }
@@ -22,33 +22,19 @@ export default function Login() {
 
   const signInWithGoogle = async () => {
     try {
-      console.log("Attempting Google Sign-In...");
-      const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-      console.log("Google Sign-In Success:", user);
+      await signInWithPopup(auth, googleProvider);
+      navigate("/HomePage")
     } catch (err) {
-      console.error("Google Sign-In Error:", err.message, err.code);
+      console.error(err);
     }
   };
-  
-  
-
-   ; // Make sure to import `useEffect` from React
-
-  // ... rest of the code ...
-
-  // Add this code to handle the redirect result
-   // Make sure to import `useEffect` from React
-  
-
-  
 
   return (
     <div id="root">
       <header className="showcase">
         <div className="showcase-content">
           <div className="formm">
-            <form>
+            <form onSubmit={signIn}>
               <h1>Sign In</h1>
               <div className="info">
                 <input
@@ -70,7 +56,7 @@ export default function Login() {
                 />
               </div>
               <div className="btn">
-                <button onClick={signIn} className="btn-primary">
+                <button type="submit" className="btn-primary">
                   Sign In
                 </button>
               </div>

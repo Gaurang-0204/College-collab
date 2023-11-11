@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const HomePage = () => {
   return (
@@ -7,9 +8,9 @@ const HomePage = () => {
         <img src=" " alt="" className="" />
         <nav>
           <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Region</a></li>
-            <li><a href="">About</a></li>
+            <li>Home</li>
+            <li>Region</li>
+            <li>About</li>
           </ul>
         </nav>
         <img src="" alt="" className="menu-icon" />
@@ -32,7 +33,7 @@ const HomePage = () => {
         </div>
         <div className="col">
           <div className="card card1">
-            <h5>Western desert</h5>
+            <h5><Link to="/club">Western desert </Link></h5>
             <p>
               Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
               consectetur, adipisci velit...

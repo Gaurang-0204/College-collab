@@ -35,7 +35,7 @@ export default function Login() {
         <div className="showcase-content">
           <div className="formm">
             <form onSubmit={signIn}>
-              <h1>Sign In</h1>
+              <h1>Welcome...</h1>
               <div className="info">
                 <input
                   className="email"
@@ -68,8 +68,8 @@ export default function Login() {
             </form>
           </div>
           <div className="signup">
-            <p>New to College Collab</p>
-            <Link to="/Signup">Sign up now</Link>
+            <p>Don't have an account? </p>
+            <Link to="/Signup">Sign up </Link>
           </div>
         </div>
       </header>

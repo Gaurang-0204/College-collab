@@ -12,6 +12,8 @@ import Createclub from './components/Club/Createclub'
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 function App() {
+
+const [loading,setLoading]=useState(false);
   useEffect(() =>{
     setLoading(true)
     setTimeout(()=>{
@@ -42,8 +44,8 @@ function App() {
       
     
     </Router>
-        }
-        </div>
+    }
+    </div>
   );
 }
 

@@ -353,3 +353,53 @@ footer {
 	padding-left: 10px;
 	background: #333333;
 }
+
+ 
+
+/* Start----Additional media queries for other screen sizes if needed */
+
+@media only screen and (max-width: 768px) {
+    .container {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .navbar {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-icon {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .col {
+        flex-basis: 100%;
+    }
+
+    .card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .showcase-content {
+        width: 100%;
+        padding: 40px;
+    }
+}
+
+/* End----Additional media queries for other screen sizes if needed */
+

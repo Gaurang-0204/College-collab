@@ -3,6 +3,7 @@ import { Link,useNavigate} from "react-router-dom";
 import { auth, googleProvider } from "../config/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import "./Login.css";
+import smallImage from './GoogleLogo.png'
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -61,8 +62,8 @@ export default function Login() {
                 </button>
               </div>
               <div className="btn">
-                <button onClick={signInWithGoogle} className="btn-primary">
-                  Sign In with Google
+                <button onClick={signInWithGoogle} className="btn-google">
+                <img src={smallImage} alt="Small Icon" />Sign In with Google
                 </button>
               </div>
             </form>

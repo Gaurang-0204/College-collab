@@ -32,7 +32,7 @@ const Club = () => {
     <div>
       {clublist.map((club) => (
         <div>
-          <div className="container"> 
+          <div> 
           <Link to={`/Showclub/${club.id}`}> 
                 <h2 onClick={()=> setclubid(club.id)}>{club.name}</h2>
                 </Link>

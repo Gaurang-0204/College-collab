@@ -2,15 +2,36 @@
 import './App.css';
 //import { Login,} from './components/Login';
 //import { Signup } from './components/Signup';
+import React, { useState,useEffect } from "react";
 import {BrowserRouter as Router,Routes,Route,} from 'react-router-dom'
 import Login from './components/Login';
 import  Signup  from './components/Signup';
 import HomePage from './components/HomePage';
 import Club from './components/Club/Club';
 import Createclub from './components/Club/Createclub'
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 function App() {
+
+const [loading,setLoading]=useState(false);
+  useEffect(() =>{
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    },2000)
+  },[])
   return (
+    <div className="App">
+      
+    {
+      loading ?
+      <ClimbingBoxLoader
+      color={"#000000"}
+      loading={loading}
+      size={35}
+    />
+   
+      :
     <Router>
       <Routes>
         
@@ -23,6 +44,8 @@ function App() {
       
     
     </Router>
+    }
+    </div>
   );
 }
 

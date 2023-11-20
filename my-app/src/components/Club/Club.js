@@ -1,41 +1,58 @@
-import React, { useEffect, useState } from 'react'
-import { db  } from "../../config/firebase";
-import { collection, getDocs } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { db } from '../../config/firebase';
+import { collection, getDocs } from 'firebase/firestore'
+import { Link } from 'react-router-dom';
+import '../Login.css';
+
+
 
 const Club = () => {
-  const[clublist, setclublist]=useState([]);
-  const clubcollectionref = collection(db,"clubs");
-
-  useEffect(()=> {
-    const getclublist= async () =>{
-      try{
-        const data =await getDocs(clubcollectionref);
-        const filteredData = data.docs.map((doc)=>({
+  const [clublist, setClubList] = useState([]);
+  const [clubid, setclubid]=useState("");
+  const clubCollectionRef = collection(db, 'club');
+  
+    const getClubList = async () => {
+      let filteredData = []; // Declare filteredData with the appropriate scope
+      try {
+        const data = await getDocs(clubCollectionRef);
+        filteredData = data.docs.map((doc) => ({
           ...doc.data(),
-        id: doc.id,
-      }));
-      setclublist(filteredData);
-      }catch(err){
-        console.error(err)
+          id: doc.id,
+        }));
+        setClubList(filteredData);
+      } catch (err) {
+        console.error(err);
       }
     };
-    getclublist();
-  },[clubcollectionref]);
+    useEffect(() => {
 
+    getClubList();
+  }, []);
   return (
     <div>
-      {clublist.map((club)=>( 
-        <div> 
-          { <h1>{club.Name}</h1> }
-          <p>Id: {club.Clubid}</p>/
+      {clublist.map((club) => (
+        <div>
+          <div className="container"> 
+          <Link to={`/Showclub/${club.id}`}> 
+                <h2 onClick={()=> setclubid(club.id)}>{club.name}</h2>
+                </Link>
+                <small>{club.members}</small>
+                <p>Hello Everyone, This clubs belongs to dypiu, under yhre inernational branch, for joining this club go here , for more info contact us on mail or given whasts app.</p>
+                <span class ="left-container-arrow"></span>
+            </div>
+           
+          
+          
+          
+          
+          
         </div>
-
       ))}
-      <p></p>
-      
+       <button><Link to = '/createclub'>Create club</Link></button> 
     </div>
   )
 }
 
-export default Club;
 
+
+export default Club;

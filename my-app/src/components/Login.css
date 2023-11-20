@@ -9,7 +9,7 @@
 .container{
 	width:100%;
 	height:100vh;
-	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(D:\react\college-collab1\my-app\public\backgroung.jpg);
+	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(C:\Users\saket\OneDrive\Desktop\College-collab-main-saket\public\login.PNG);
 	background-position: center;
 	background-size: cover;
 	padding-left: 8%;
@@ -78,28 +78,28 @@ button{
 .card{
 	width: 200px;
 	height: 230px;
+	color: #ffffff;
 	display: inline-block;
 	border-radius: 10px;
 	padding: 15px 25px;
 	box-sizing: border-box;
 	cursor: pointer;
 	margin: 10px 15px;
-	
 	background-position: center;
 	background-size: cover;
 	transition: transform 0.5s;
 }
 .card1{
-	background-image: url();
+	background-image: url(C:\Users\saket\OneDrive\Desktop\College-collab-main-saket\public\clubs.jpg);
 }
 .card2{
-	background-image: url();
+	background-image: url(C:\Users\saket\OneDrive\Desktop\College-collab-main-saket\public\Events.jpeg);
 }
 .card3{
-	background-image: url();
+	background-image: url(C:\Users\saket\OneDrive\Desktop\College-collab-main-saket\public\moodle.jpeg);
 }
 .card4{
-	background-image: url();
+	background-image: url(C:\Users\saket\OneDrive\Desktop\College-collab-main-saket\public\collpoll.jpeg);
 }
 .card:hover{
 	transform: translateY(-10px);
@@ -121,8 +121,8 @@ h5{
 body {
 	font-family: 'Arial', sans-serif;
 	-webkit-font-smoothing: antialiased;
-	background: #000;
-	color: #999;
+	background: #ffffff;
+	color: #000000;
 }
 
 ul {
@@ -152,8 +152,8 @@ img {
 .showcase {
 	width: 100%;
 	height: 100vh;
-	position: relative;
-	background: url('https://i.ibb.co/vXqDmnh/background.jpg') no-repeat center center/cover;
+	position: relative;	
+	
 }
 
 .showcase::after {
@@ -175,7 +175,7 @@ img {
 	position: relative;
 	z-index: 2;
 	width: 450px;
-	height: 650px;
+	height: 100vh;
 	background: rgb(0, 0, 0, 0.65);
 	margin: 0 auto;
 	display: flex;
@@ -227,6 +227,30 @@ img {
 	cursor: pointer;
 	outline: none;
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+}
+
+img{
+	display: inline-block;
+	vertical-align: middle;
+	width: 42px;
+	height: 42px;
+}
+
+.btn-google{
+	/*display: inline-block;*/
+	background: white;
+	color: #444;
+	width: 100%;
+	border-radius: 6px;
+	border: thin solid #888;
+	box-shadow: 1px 1px 1px grey;
+	white-space: nowrap;
+
+    /*vertical-align: middle;
+    padding-left: 42px;
+    padding-right: 42px;*/
+    font-size: 17px;
+    font-weight: bold;
 }
 
 .help {
@@ -285,6 +309,7 @@ input[type=password] {
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+	color: rgb(255, 255, 255)
 }
 
 .signup p {
@@ -354,3 +379,52 @@ footer {
 	padding-left: 10px;
 	background: #333333;
 }
+/* Your existing CSS code */
+
+/* Media query for screens smaller than 768px */
+@media only screen and (max-width: 768px) {
+    .container {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .navbar {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-icon {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .col {
+        flex-basis: 100%;
+    }
+
+    .card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .showcase-content {
+        width: 100%;
+        padding: 40px;
+    }
+}
+
+/* Additional media queries for other screen sizes if needed */
+
+/* Your existing CSS code */

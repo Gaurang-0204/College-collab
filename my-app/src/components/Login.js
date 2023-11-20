@@ -3,6 +3,7 @@ import { Link,useNavigate} from "react-router-dom";
 import { auth, googleProvider } from "../config/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import "./Login.css";
+import smallImage from './GoogleLogo.png'
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -35,7 +36,7 @@ export default function Login() {
         <div className="showcase-content">
           <div className="formm">
             <form onSubmit={signIn}>
-              <h1>Sign In</h1>
+              <h1>Welcome...</h1>
               <div className="info">
                 <input
                   className="email"
@@ -61,15 +62,15 @@ export default function Login() {
                 </button>
               </div>
               <div className="btn">
-                <button onClick={signInWithGoogle} className="btn-primary">
-                  Sign In with Google
+                <button onClick={signInWithGoogle} className="btn-google">
+                <img src={smallImage} alt="Small Icon" />Sign In with Google
                 </button>
               </div>
             </form>
           </div>
           <div className="signup">
-            <p>New to College Collab</p>
-            <Link to="/Signup">Sign up now</Link>
+            <p>Don't have an account? </p>
+            <Link to="/Signup">Sign up </Link>
           </div>
         </div>
       </header>

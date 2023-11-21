@@ -48,7 +48,7 @@ const Club = () => {
           
         </div>
       ))}
-       <button><Link to = '/createclub'>Create club</Link></button> 
+       <button className='btn-club'><Link to = '/createclub'>Create club</Link></button> 
     </div>
   )
 }

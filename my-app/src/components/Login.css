@@ -9,7 +9,7 @@
 .container{
 	width:100%;
 	height:100vh;
-	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url();
+	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('../../public/homepage_background.PNG');
 	background-position: center;
 	background-size: cover;
 	padding-left: 8%;
@@ -121,7 +121,7 @@ h5{
 body {
 	font-family: 'Arial', sans-serif;
 	-webkit-font-smoothing: antialiased;
-	background: #ffffff;
+	background: #808080;
 	color: #000000;
 }
 
@@ -424,7 +424,15 @@ footer {
         padding: 40px;
     }
 }
-
+/*------------- club page -----------*/
+.btn-club{
+	background-color: #000;
+}
+/*----------- showclub page -------*/
+.clubimg {
+	width: 300px;
+	margin: 300px;
+  }
 /* Additional media queries for other screen sizes if needed */
 
 /* Your existing CSS code */

@@ -1,18 +1,19 @@
-import React  from 'react'
-import { getDoc,doc } from 'firebase/firestore'
-import { db } from '../../config/firebase'
-import { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getDoc, doc } from 'firebase/firestore';
+import { db, storage } from '../../config/firebase';
 import { useParams } from 'react-router-dom';
+import { ref, getDownloadURL } from 'firebase/storage';
 
 const Showclub = () => {
-  const [clubData, setClubData] = useState(null);
   const { clubid } = useParams();
+  const [clubData, setClubData] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
     const fetchClubData = async () => {
       try {
-        const docref = doc(db, "club", clubid);
-        const club = await getDoc(docref);
+        const docRef = doc(db, "club", clubid);
+        const club = await getDoc(docRef);
         setClubData(club.data());
       } catch (error) {
         console.error('Error fetching club data:', error);
@@ -20,7 +21,20 @@ const Showclub = () => {
     };
 
     fetchClubData();
-  }, []);
+  }, [clubid]);
+
+  useEffect(() => {
+    if (clubData && clubData.image) {
+      const imageRef = ref(storage, clubData.image);
+      getDownloadURL(imageRef)
+        .then((url) => {
+          setImageUrl(url);
+        })
+        .catch((error) => {
+          console.error('Error fetching image URL: ', error);
+        });
+    }
+  }, [clubData]);
 
   return (
     <div>
@@ -28,7 +42,8 @@ const Showclub = () => {
       {clubData ? (
         <div>
           <p>Name: {clubData.name}</p>
-          <p>members: {clubData.members}</p>
+          <p>Members: {clubData.members}</p>
+          {imageUrl && <img src={imageUrl} className='clubimg'/>}
           {/* Add more properties as needed */}
         </div>
       ) : (

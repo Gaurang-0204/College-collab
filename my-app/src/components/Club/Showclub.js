@@ -3,6 +3,7 @@ import { getDoc, doc } from 'firebase/firestore';
 import { db, storage } from '../../config/firebase';
 import { useParams } from 'react-router-dom';
 import { ref, getDownloadURL } from 'firebase/storage';
+import '../Login.css'
 
 const Showclub = () => {
   const { clubid } = useParams();
@@ -42,7 +43,7 @@ const Showclub = () => {
       {clubData ? (
         <div>
           <p>Name: {clubData.name}</p>
-          <p>Members: {clubData.members}</p>
+          <p>Description: {clubData.description}</p>
           {imageUrl && <img src={imageUrl} className='clubimg'/>}
           {/* Add more properties as needed */}
         </div>

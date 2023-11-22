@@ -5,9 +5,12 @@ import { addDoc, collection } from 'firebase/firestore';
 import { ref, uploadBytes } from 'firebase/storage';
 import { v4 } from 'uuid';
 
+
 const Createclub = () => {
+  const [ClubId, setClubId] = useState('');
   const [newclubName, setclubName] = useState('');
-  const [newmembers, setmembers] = useState('');
+  const [clubAdmin, setclubAdmin] = useState('');
+  const [newdescription, setdescription] = useState('');
   const [imageUpload, setImageUpload] = useState(null);
   const paths = `club/${v4()}-${imageUpload?.name}`;
 
@@ -26,8 +29,10 @@ const Createclub = () => {
   const onSubmitClub = async () => {
     try {
       const docRef = await addDoc(clubCollectionRef, {
+        clubId: ClubId, // Use camelCase for property names
         name: newclubName,
-        members: newmembers,
+        admin: clubAdmin,
+        description: newdescription,
         image: paths,
       });
 
@@ -43,15 +48,25 @@ const Createclub = () => {
     <div>
       <div>
         <input
+          placeholder="ClubId"
+          type="number"
+          value={ClubId}
+          onChange={(e) => setClubId(e.target.value)}
+        />
+        <input
           placeholder="club name"
           value={newclubName}
           onChange={(e) => setclubName(e.target.value)}
         />
         <input
-          placeholder="members"
-          type="number"
-          value={newmembers}
-          onChange={(e) => setmembers(e.target.value)}
+          placeholder="Club Admin"
+          value={clubAdmin}
+          onChange={(e) => setclubAdmin(e.target.value)}
+        />
+        <input
+          placeholder="Description "
+          value={newdescription}
+          onChange={(e) => setdescription(e.target.value)}
         />
         <input type="file" onChange={(event) => setImageUpload(event.target.files[0])} />
       </div>
@@ -61,4 +76,3 @@ const Createclub = () => {
 };
 
 export default Createclub;
-

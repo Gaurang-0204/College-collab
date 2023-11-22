@@ -430,8 +430,7 @@ footer {
 }
 /*----------- showclub page -------*/
 .clubimg {
-	width: 300px;
-	margin: 300px;
+	border-radius: 8px;
   }
 /* Additional media queries for other screen sizes if needed */
 

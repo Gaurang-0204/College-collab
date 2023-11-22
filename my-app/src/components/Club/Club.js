@@ -36,8 +36,8 @@ const Club = () => {
           <Link to={`/Showclub/${club.id}`}> 
                 <h2 onClick={()=> setclubid(club.id)}>{club.name}</h2>
                 </Link>
-                <small>{club.members}</small>
-                <p>Hello Everyone, This clubs belongs to dypiu, under yhre inernational branch, for joining this club go here , for more info contact us on mail or given whasts app.</p>
+                <small>{club.description}</small>
+                
                 <span class ="left-container-arrow"></span>
             </div>
            

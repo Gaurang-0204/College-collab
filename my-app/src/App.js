@@ -10,6 +10,7 @@ import HomePage from './components/HomePage';
 import Club from './components/Club/Club';
 import Showclub from './components/Club/Showclub';
 import Createclub from './components/Club/Createclub';
+import Profile from './components/Profile';
 
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
@@ -45,6 +46,7 @@ const [loading,setLoading]=useState(false);
         <Route path='/club' element={<Club/>}/>
         <Route path='/Showclub/:clubid' element={<Showclub/>}/>
         <Route path='/createclub' element={<Createclub/>}/>
+        <Route path='/Profile' element={<Profile/>}/>
       </Routes>  
       
     

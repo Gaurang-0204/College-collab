@@ -1,21 +1,43 @@
 import React, { useState } from "react";
-import { Link,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../config/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { db } from "../config/firebase";
+import { collection, where, getDocs,query } from "firebase/firestore";
 import "./Login.css";
-import smallImage from './GoogleLogo.png'
+import smallImage from "./GoogleLogo.png";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
 
+  const setUserIdInLocalStorage = (userId) => {
+    localStorage.setItem("userId", userId);
+  };
+
   const signIn = async (e) => {
-    e.preventDefault(); // Prevents the default form submission
+    e.preventDefault();
+
     try {
+      const collectionRef = collection(db, "students");
+      const querySnapshot = await getDocs(
+        query(collectionRef, where("email", "==", email))
+      );
+
+      if (querySnapshot.empty) {
+        console.log("User not found");
+        return;
+      }
+
+      const userDoc = querySnapshot.docs[0];
+      const userId = userDoc.id;
+
       await signInWithEmailAndPassword(auth, email, password);
-      // Use Link to navigate to "/Signup"
-      navigate("/HomePage")
+
+      setUserIdInLocalStorage(userId);
+
+      navigate("/HomePage");
     } catch (err) {
       console.error(err);
     }
@@ -23,8 +45,25 @@ export default function Login() {
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
-      navigate("/HomePage")
+      const result = await signInWithPopup(auth, googleProvider);
+      const googleUser = result.user;
+
+      const collectionRef = collection(db, "students");
+      const querySnapshot = await getDocs(
+        query(collectionRef, where("email", "==", googleUser.email))
+      );
+
+      if (querySnapshot.empty) {
+        console.log("User not found");
+        return;
+      }
+
+      const userDoc = querySnapshot.docs[0];
+      const userId = userDoc.id;
+
+      setUserIdInLocalStorage(userId);
+
+      navigate("/HomePage");
     } catch (err) {
       console.error(err);
     }
@@ -63,7 +102,7 @@ export default function Login() {
               </div>
               <div className="btn">
                 <button onClick={signInWithGoogle} className="btn-google">
-                <img src={smallImage} alt="Small Icon" />Sign In with Google
+                  <img src={smallImage} alt="Small Icon" /> Sign In with Google
                 </button>
               </div>
             </form>
@@ -77,4 +116,5 @@ export default function Login() {
     </div>
   );
 }
+
 

@@ -432,6 +432,10 @@ footer {
 .clubimg {
 	border-radius: 8px;
   }
+.image-container{
+	width: 300px;
+	
+}
 /* Additional media queries for other screen sizes if needed */
 
 /* Your existing CSS code */

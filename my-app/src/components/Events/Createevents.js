@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { db } from '../../config/firebase'
 import { storage } from '../../config/firebase'
 import { addDoc,collection } from 'firebase/firestore'
 import {ref,uploadBytes} from 'firebase/storage'
 import { v4 } from 'uuid'
 const Createevents = () => {
+    let navigate = useNavigate();
     const [EventId, setEventId] = useState('');
     const [newEventName, setEventName] = useState('');
     const [eventAdmin, seteventAdmin] = useState('');
@@ -39,6 +41,7 @@ const Createevents = () => {
           console.log('Document written with ID: ', docRef.id);
     
           await uploadFile();
+          navigate("/Events")
         } catch (err) {
           console.error('Error adding document: ', err);
         }

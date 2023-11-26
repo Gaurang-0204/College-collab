@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { getDoc, doc,getDocs,where,query,collection } from 'firebase/firestore';
+import { getDoc, doc, getDocs, where, query, collection } from 'firebase/firestore';
 import { db, storage } from '../../config/firebase';
 import { useParams } from 'react-router-dom';
 import { ref, getDownloadURL } from 'firebase/storage';
-import '../Login.css'
+import '../Login.css';
 
 const Showclub = () => {
   const { clubid } = useParams();
   const [clubData, setClubData] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -26,25 +26,34 @@ const Showclub = () => {
   }, [clubid]);
 
   useEffect(() => {
-    if (clubData && clubData.image) {
-      const imageRef = ref(storage, clubData.image);
-      getDownloadURL(imageRef)
-        .then((url) => {
-          setImageUrl(url);
-        })
-        .catch((error) => {
-          console.error('Error fetching image URL: ', error);
+    const fetchImages = async () => {
+      if (clubData && clubData.images && clubData.images.length > 0) {
+        const imagePromises = clubData.images.map(async (imagePath) => {
+          const imageRef = ref(storage, imagePath);
+          try {
+            const imageUrl = await getDownloadURL(imageRef);
+            return imageUrl;
+          } catch (error) {
+            console.error('Error fetching image URL: ', error);
+            return null;
+          }
         });
-    }
+
+        const resolvedImageUrls = await Promise.all(imagePromises);
+        setImageUrls(resolvedImageUrls.filter((url) => url !== null));
+      }
+    };
+
+    fetchImages();
   }, [clubData]);
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const collectionRef = collection(db, "events");
+        const collectionRef = collection(db, 'events');
         const querySnapshot = await getDocs(
-        query(collectionRef, where("clubname", "==", clubData.name)
-        ));
+          query(collectionRef, where('clubname', '==', clubData.name))
+        );
 
         if (querySnapshot.empty) {
           console.log(`No events found for clubname: ${clubData.name}`);
@@ -75,7 +84,17 @@ const Showclub = () => {
         <div>
           <p>Name: {clubData.name}</p>
           <p>Description: {clubData.description}</p>
-          {imageUrl && <img src={imageUrl} className="clubimg" alt="Club" />}
+          {/* Display images here */}
+          {imageUrls.length > 0 && (
+            <div>
+              <h2>Images</h2>
+              <div className="image-container">
+                {imageUrls.map((imageUrl, index) => (
+                  <img key={index} src={imageUrl} className="clubimg" alt={`Image ${index + 1}`} />
+                ))}
+              </div>
+            </div>
+          )}
           {/* Display events here */}
           {events.length > 0 && (
             <div>
@@ -97,3 +116,4 @@ const Showclub = () => {
 };
 
 export default Showclub;
+

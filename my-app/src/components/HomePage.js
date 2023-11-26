@@ -28,6 +28,7 @@ const HomePage = () => {
             <li>Home</li>
             <li><Link to='/Profile'>Profile</Link></li>
             <li>About</li>
+            
             <li onClick={logout}>Logout</li>
           </ul>
         </nav>
@@ -50,7 +51,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="card card2">
-            <h5>Events</h5>
+            <h5><Link to='/Events'>Events</Link></h5>
             <p>
               Click here to know and join the upcmoing events. 
             </p>

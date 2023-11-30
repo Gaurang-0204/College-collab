@@ -8,11 +8,15 @@ import Login from './components/Login';
 import  Signup  from './components/Signup';
 import HomePage from './components/HomePage';
 import Club from './components/Club/Club';
-
 import Showclub from './components/Club/Showclub';
 import Createclub from './components/Club/Createclub';
+import Profile from './components/Profile';
+import Events from './components/Events/Events'
+import Showevents from './components/Events/Showevents';
+import Createevents from './components/Events/Createevents';
 
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+
 
 
 function App() {
@@ -46,6 +50,10 @@ const [loading,setLoading]=useState(false);
         <Route path='/club' element={<Club/>}/>
         <Route path='/Showclub/:clubid' element={<Showclub/>}/>
         <Route path='/createclub' element={<Createclub/>}/>
+        <Route path='/Profile' element={<Profile/>}/>
+        <Route path='/Events' element={<Events/>}/>
+        <Route path='/Showevents/:eventid' element={<Showevents/>}/>
+        <Route path='/createevents' element={<Createevents/>}/>
       </Routes>  
       
     

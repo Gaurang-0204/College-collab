@@ -1,7 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+import { auth } from '../config/firebase';
+import { signOut } from 'firebase/auth';
 
 const HomePage = () => {
+  let navigate = useNavigate();
+
+  const clearUserIdInLocalStorage = () => {
+    localStorage.removeItem("userId");
+  }
+  const logout = async () => {
+    try {
+      // Add any other necessary logout logic here
+      await signOut(auth);
+      clearUserIdInLocalStorage();
+      navigate("/"); // Navigate to the login page or another appropriate page after logout
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <div className="container">
       <div className="navbar">
@@ -9,8 +26,10 @@ const HomePage = () => {
         <nav>
           <ul>
             <li>Home</li>
-            <li>Region</li>
+            <li><Link to='/Profile'>Profile</Link></li>
             <li>About</li>
+            
+            <li onClick={logout}>Logout</li>
           </ul>
         </nav>
         <img src="" alt="" className="menu-icon" />
@@ -32,7 +51,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="card card2">
-            <h5>Events</h5>
+            <h5><Link to='/Events'>Events</Link></h5>
             <p>
               Click here to know and join the upcmoing events. 
             </p>
@@ -55,12 +74,7 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
-
-
-
-
-
+export default HomePage;
 
 
 

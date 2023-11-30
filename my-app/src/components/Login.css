@@ -430,9 +430,12 @@ footer {
 }
 /*----------- showclub page -------*/
 .clubimg {
-	width: 300px;
-	margin: 300px;
+	border-radius: 8px;
   }
+.image-container{
+	width: 300px;
+	
+}
 /* Additional media queries for other screen sizes if needed */
 
 /* Your existing CSS code */

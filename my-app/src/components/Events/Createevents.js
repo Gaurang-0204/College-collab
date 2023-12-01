@@ -49,38 +49,43 @@ const Createevents = () => {
 
 
   return (
-    <div>
-    <div>
+    <div className='vertical-container'>
+    <div className='clubtype'>
+      <div>
       <input
-        placeholder="club name"
-        
+        placeholder="Event Name"
+        type='string'
         value={clubName}
         onChange={(e) => setclubName(e.target.value)}
       />
        <input
-        placeholder="event id"
+        placeholder="Event ID"
         type='number'
         value={EventId}
         onChange={(e) => setEventId(e.target.value)}
       />
       <input
         placeholder="Event name"
+        type='string'
         value={newEventName}
         onChange={(e) => setEventName(e.target.value)}
       />
       <input
         placeholder="Event Admin"
+        type='string'
         value={eventAdmin}
         onChange={(e) => seteventAdmin(e.target.value)}
       />
       <input
         placeholder="Description "
+        type='string'
         value={newdescription}
         onChange={(e) => setdescription(e.target.value)}
       />
-      <input type="file" onChange={(event) => setImageUpload(event.target.files[0])} />
+      <input type="file"  className='file-input' onChange={(event) => setImageUpload(event.target.files[0])} />
     </div>
-    <button onClick={onSubmitClub}>Submit Club</button>
+    <button className='btn-primary' onClick={onSubmitClub}>Submit Club</button>
+  </div>
   </div>
   )
 }

@@ -50,7 +50,7 @@ const Events = () => {
           
         </div>
       ))}
-       <button className='btn-club'><Link to = '/createevents'>Create event</Link></button> 
+       <button className='btn-primary'><Link to = '/createevents'>Create event</Link></button> 
       
     </div>
   )

@@ -100,10 +100,11 @@ export default function Signup() {
                 />
 
                 <input 
-                type="file" 
+                type="file"  className="file-input"
                 onChange={(event) => setImageUpload(event.target.files[0])} 
                 />
-
+                <br/>
+                <br/>
                 <input
                   className="email"
                   type="email"

@@ -175,7 +175,7 @@ img {
 
 .showcase {
 	width: 100%;
-	height: 100vh;
+	height: 110vh;
 	position: relative;	
 	
 }
@@ -199,7 +199,7 @@ img {
 	position: relative;
 	z-index: 2;
 	width: 450px;
-	height: 100vh;
+	height: 110vh;
 	background: rgb(0, 0, 0, 0.65);
 	margin: 0 auto;
 	display: flex;
@@ -462,9 +462,9 @@ footer {
     }
 }
 /*------------- club page -----------*/
-.btn-club{
-	background-color: #000;
-}
+
+
+
 /*----------- showclub page -------*/
 .clubimg {
 	border-radius: 8px;
@@ -475,7 +475,7 @@ footer {
 }
 /* Additional media queries for other screen sizes if needed */
 
-/* ------create club ---------*/
+/* ------create club -
 
 .vertical-container {
     display: flex;
@@ -506,9 +506,43 @@ footer {
     cursor: pointer;
 }
 
+*/
+.vertical-container{
+
+	width: 100%;
+	height: 100vh;
+	position: relative;	
+	justify-content: center;
+	text-align: center;
+}
 
 
 
+input[type=number], input[type=string] {
+	margin-bottom: 30px;
+	width: 100%;
+	height: 50px;
+	border-radius: 5px;
+	border: none;
+	padding: 10px;
+	font-size: inherit;
+	background: #343434;
+	color: #fff;
+}
 
+
+.file-input{
+	border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.clubtype{
+	padding: 40px;
+	display: inline-block;
+	width: 600px;
+	height: 100vh;
+	background-color: #000;
+}
 
 /* Your existing CSS code */

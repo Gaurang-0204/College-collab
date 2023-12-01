@@ -59,7 +59,7 @@ const Createclub = () => {
   };
 
   return (
-    <div>
+    <div className='vertical-container'>
       <div>
         <input
           placeholder="ClubId"

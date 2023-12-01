@@ -70,10 +70,11 @@ export default function Signup() {
   }
 
   return (
-    <div>
+    <div >
       <header className="showcase">
         <div className="showcase-content">
           <div className="formm">
+            
             <div className="btn">
               <h4>{error}</h4>
             </div>
@@ -85,7 +86,7 @@ export default function Signup() {
                   className="email"
                   type="name"
                   name="username"
-                  placeholder="username"
+                  placeholder="Username"
                   value={userName}
                   onChange={(e) => setuserName(e.target.value)}
                 />
@@ -97,6 +98,7 @@ export default function Signup() {
                   value={prn}
                   onChange={(e) => setPrn(e.target.value)}
                 />
+
                 <input 
                 type="file" 
                 onChange={(event) => setImageUpload(event.target.files[0])} 

@@ -26,10 +26,9 @@ const HomePage = () => {
         <nav>
           <ul>
             <li>Home</li>
-            <li><Link to='/Profile'>Profile</Link></li>
             <li>About</li>
-            
-            <li onClick={logout}>Logout</li>
+            <li><Link to='/Profile'> Profile </Link></li>
+            <li className='logout'  onClick={logout}>Logout</li>
           </ul>
         </nav>
         <img src="" alt="" className="menu-icon" />
@@ -39,7 +38,6 @@ const HomePage = () => {
           <h1 className="hp">DYPIU</h1>
           <p className="hpp">
           D Y Patil International University, Akrudi, Pune is one of the finest private universities in India, which is providing the highly-skilled talent to the nation and overseas. The university has recently become operational as a state private university and offering the best quality higher education in the field of engineering, management, international business, graphic design, biotechnology, journalism, and mass communication.
-
           </p>
           <button type="button">Explore</button>
         </div>
@@ -57,13 +55,13 @@ const HomePage = () => {
             </p>
           </div>
           <div className="card card3">
-            <h5>Moodle</h5>
+            <h5><a href="https://learning.dypiu.ac.in/">Moodle</a></h5>
             <p>
               Acces your courses here.
             </p>
           </div>
           <div className="card card4">
-            <h5>Collpoll</h5>
+            <h5><a href="https://dypiu.collpoll.com/home">Collpoll</a></h5>
             <p>
              Check and pay your dues here.
             </p>

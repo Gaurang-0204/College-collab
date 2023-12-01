@@ -40,12 +40,7 @@ const Club = () => {
                 
                 <span class ="left-container-arrow"></span>
             </div>
-           
-          
-          
-          
-          
-          
+         
         </div>
       ))}
        <button className='btn-club'><Link to = '/createclub'>Create club</Link></button> 

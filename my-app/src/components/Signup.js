@@ -13,8 +13,8 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [userName,setuserName]=useState("");
-  const [prn, setPrn]=useState("");
+  const [userName, setuserName] = useState("");
+  const [prn, setPrn] = useState("");
   const [imageUpload, setImageUpload] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,13 +36,13 @@ export default function Signup() {
       const docRef = await addDoc(studentCollectionRef, {
         email: email, // Use camelCase for property names
         name: userName,
-        prn:prn,
+        prn: prn,
         image: paths,
       });
 
       console.log('Document written with ID: ', docRef.id);
 
-     
+
     } catch (err) {
       console.error('Error adding document: ', err);
     }
@@ -79,16 +79,20 @@ export default function Signup() {
             </div>
             <form>
               <h1>Sign Up</h1>
-              
+
               <div className="info">
-              <input
-                  className="email"
-                  type="name"
-                  name="username"
-                  placeholder="username"
-                  value={userName}
-                  onChange={(e) => setuserName(e.target.value)}
-                />
+                
+                  <input
+                    className="email"
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    value={userName}
+                    onChange={(e) => setuserName(e.target.value)}
+                    required  // This makes the input compulsory
+                  />
+                
+
                 <input
                   className="email"
                   type="name"
@@ -96,10 +100,11 @@ export default function Signup() {
                   placeholder="PRN"
                   value={prn}
                   onChange={(e) => setPrn(e.target.value)}
+                  required
                 />
-                <input 
-                type="file" 
-                onChange={(event) => setImageUpload(event.target.files[0])} 
+                <input
+                  type="file"
+                  onChange={(event) => setImageUpload(event.target.files[0])}
                 />
 
                 <input
@@ -109,8 +114,11 @@ export default function Signup() {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required // This makes the input compulsory
+                  pattern="[a-z0-9._%+-]+@dypic\.ac\.in$" // This enforces the @dypic.ac.in domain
                 />
-             
+
+
                 <input
                   className="email"
                   type="password"
@@ -127,7 +135,7 @@ export default function Signup() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                
+
               </div>
               <div className="btn">
                 <button

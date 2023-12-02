@@ -16,36 +16,123 @@
 	padding-right: 8%;
 	box-sizing: border-box;
 }
-.navbar{
-	height: 12%;
+
+nav{
+	width: 100%;
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	position: relative;
 }
-.logo{
-	width: 50px;
-	cursor: pointer;
-}
-.menu-icon{
-	width: 30px;
-	cursor: pointer;
-	margin-left: 40px;
-}
-nav{
-	flex: 1;
-	text-align: right;
 
+nav ul{
+	width: 100%;
+	text-align: right;
+}
+ nav ul li{
+	display: inline-block;
+	list-style: none;
+	margin: 10px 20px;
+ }
+ .sub-menu-wrap{
+	position: absolute;
+	top: 100%;
+	right: 1%;
+	width: 320px;
+	max-height: 0px;
+	overflow: hidden;
+	transition: max-height 0.5s;
+ }
+
+ .sub-menu-wrap.open-menu{
+	max-height: 400px;
+	
+ }
+ .sub-menu{
+	background: #ffffff;
+	padding: 20px;
+	margin: 10px;
+ }
+ .text{
+	color:#000000;
+}
+
+ .user-info{
+	display: flex;
+	align-items: center;
+ }
+
+ .user-info h3{
+	font-weight: 500;
+ }
+
+ .user-info img{
+width: 60px;
+border-radius: 50%;
+margin-right: 15px;
+ }
+
+ .sub-menu hr{
+	border: 0;
+	height: 1px;
+	width: 100%;
+	background: #ccc;
+	margin: 15px 0 10px;
+ }
+
+ .sub-menu-link{
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: #525252;
+	margin: 12px 0;
+ }
+
+ .sub-menu-link p{
+	width: auto;
+ }
+
+ .sub-menu-link img{
+	width: 40px;
+	background: #e5e5e5;
+	border-radius: 50%;
+	padding: 8px;
+	margin-right: 15px;
+ }
+
+ .sub-menu-link span{
+	font-size: 22px;
+	transition: transform 0.5s;
+ }
+
+.sub-menu-link:hover span{
+	transform: translateX(5px);
+ }
+
+.sub-menu-link:hover p{
+	font-weight: 600;
+ }
+.logout:hover {
+    background-color: #f2f2f2;
+}
+.profile{
+	text-decoration: none;
+	font-size: 30px;
 }
 nav ul li{
 	list-style: none;
 	display:inline-block;
 	margin-left: 60px;
+	color: #fff;
+	cursor: pointer;
 }
-nav ul li a{
+nav ul li a {
 	text-decoration: none;
 	color: #fff;
 	font-size: 13px;
 
 }
+
 .hp{
 	color: #fff;
 	font-size: 100px;
@@ -122,7 +209,7 @@ body {
 	font-family: 'Arial', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	background: #808080;
-	color: #000000;
+
 }
 
 ul {
@@ -151,7 +238,7 @@ img {
 
 .showcase {
 	width: 100%;
-	height: 100vh;
+	height: 110vh;
 	position: relative;	
 	
 }
@@ -175,7 +262,7 @@ img {
 	position: relative;
 	z-index: 2;
 	width: 450px;
-	height: 100vh;
+	height: 110vh;
 	background: rgb(0, 0, 0, 0.65);
 	margin: 0 auto;
 	display: flex;
@@ -283,11 +370,23 @@ input[type=checkbox] {
 
 input[type=email] {
 	background: #343434;
+	color: #fff;
 }
 
 input[type=password] {
 	background: #343434;
+	color: #fff;
 }
+input[type=name] {
+	background: #343434;
+	color: #fff;
+}
+input[type=file] {
+	background: #333333;
+	color: #fff;
+}
+
+
 
 /* ------ input end ------- */
 
@@ -403,6 +502,7 @@ footer {
         display: block;
         margin: 10px 0;
         text-align: center;
+
     }
 
     .row {
@@ -425,9 +525,9 @@ footer {
     }
 }
 /*------------- club page -----------*/
-.btn-club{
-	background-color: #000;
-}
+
+
+
 /*----------- showclub page -------*/
 .clubimg {
 	border-radius: 8px;
@@ -437,5 +537,75 @@ footer {
 	
 }
 /* Additional media queries for other screen sizes if needed */
+
+/* ------create club -
+
+.vertical-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+}
+
+.vertical-container input {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    color: white;
+}
+
+.vertical-container button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+*/
+.vertical-container{
+
+	width: 100%;
+	height: 100vh;
+	position: relative;	
+	justify-content: center;
+	text-align: center;
+}
+
+
+
+input[type=number], input[type=string] {
+	margin-bottom: 30px;
+	width: 100%;
+	height: 50px;
+	border-radius: 5px;
+	border: none;
+	padding: 10px;
+	font-size: inherit;
+	background: #343434;
+	color: #fff;
+}
+
+
+.file-input{
+	border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.clubtype{
+	padding: 40px;
+	display: inline-block;
+	width: 600px;
+	height: 100vh;
+	background-color: #000;
+}
 
 /* Your existing CSS code */

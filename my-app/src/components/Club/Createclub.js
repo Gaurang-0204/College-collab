@@ -59,32 +59,41 @@ const Createclub = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className='vertical-container'>
+      <div className='clubtype'>
+        <div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <input
-          placeholder="ClubId"
+          placeholder="Club ID"
           type="number"
           value={ClubId}
           onChange={(e) => setClubId(e.target.value)}
-        />
+        /><br/>
         <input
-          placeholder="club name"
+          placeholder="Club name"
+          type="string"
           value={newclubName}
           onChange={(e) => setclubName(e.target.value)}
-        />
+        /><br/>
         <input
           placeholder="Club Admin"
+          type="string"
           value={clubAdmin}
           onChange={(e) => setclubAdmin(e.target.value)}
-        />
+        /><br/>
         <input
           placeholder="Description "
+          type="string"
           value={newdescription}
           onChange={(e) => setdescription(e.target.value)}
-        />
-        <input type="file" multiple onChange={(event) => setImageUpload(event.target.files)} />
-      </div>
-      <button onClick={onSubmitClub}>Submit Club</button>
+        /><br/>
+        <input type="file" className='file-input' multiple onChange={(event) => setImageUpload(event.target.files)} />
+      </div><br/>
+      <button className='btn-primary' onClick={onSubmitClub}>Submit Club</button>
+    </div>
     </div>
   );
 };

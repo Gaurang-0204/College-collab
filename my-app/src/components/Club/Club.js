@@ -29,7 +29,7 @@ const Club = () => {
     getClubList();
   }, []);
   return (
-    <div>
+    <div className='clubfirst'>
       {clublist.map((club) => (
         <div>
           <div> 
@@ -40,15 +40,10 @@ const Club = () => {
                 
                 <span class ="left-container-arrow"></span>
             </div>
-           
-          
-          
-          
-          
-          
+         
         </div>
       ))}
-       <button className='btn-club'><Link to = '/createclub'>Create club</Link></button> 
+       <button className='btn-primary'><Link to = '/createclub'>Create New Club</Link></button> 
     </div>
   )
 }

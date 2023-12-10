@@ -64,10 +64,10 @@ const HomePage = () => {
       <div className="navbar">
         <nav>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><Link to="/Profile">Profile</Link></li>
-            <li className="logout" onClick={logout}>Logout</li>
+            <li>Home</li>
+            <li>About</li>
+            <li><Link to='/Profile'> Profile </Link></li>
+            <li className='logout'  onClick={logout}>Logout</li>
           </ul>
           {userData && (
             <div>
@@ -122,7 +122,7 @@ const HomePage = () => {
         <div className="col">
           <h1 className="hp">DYPIU</h1>
           <p className="hpp">
-            DY Patil International University, Akrudi, Pune is one of the finest private universities in India, which is providing the highly-skilled talent to the nation and overseas. The university has recently become operational as a state private university and offering the best quality higher education in the field of engineering, management, international business, graphic design, biotechnology, journalism, and mass communication.
+          D Y Patil International University, Akrudi, Pune is one of the finest private universities in India, which is providing the highly-skilled talent to the nation and overseas. The university has recently become operational as a state private university and offering the best quality higher education in the field of engineering, management, international business, graphic design, biotechnology, journalism, and mass communication.
           </p>
           <button type="button">Explore</button>
         </div>

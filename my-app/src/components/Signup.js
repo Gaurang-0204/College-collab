@@ -70,10 +70,11 @@ export default function Signup() {
   }
 
   return (
-    <div>
+    <div >
       <header className="showcase">
         <div className="showcase-content">
           <div className="formm">
+            
             <div className="btn">
               <h4>{error}</h4>
             </div>
@@ -81,18 +82,14 @@ export default function Signup() {
               <h1>Sign Up</h1>
 
               <div className="info">
-                
-                  <input
-                    className="email"
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    value={userName}
-                    onChange={(e) => setuserName(e.target.value)}
-                    required  // This makes the input compulsory
-                  />
-                
-
+              <input
+                  className="email"
+                  type="name"
+                  name="username"
+                  placeholder="Username"
+                  value={userName}
+                  onChange={(e) => setuserName(e.target.value)}
+                />
                 <input
                   className="email"
                   type="name"
@@ -102,11 +99,13 @@ export default function Signup() {
                   onChange={(e) => setPrn(e.target.value)}
                   required
                 />
-                <input
-                  type="file"
-                  onChange={(event) => setImageUpload(event.target.files[0])}
-                />
 
+                <input 
+                type="file"  className="file-input"
+                onChange={(event) => setImageUpload(event.target.files[0])} 
+                />
+                <br/>
+                <br/>
                 <input
                   className="email"
                   type="email"

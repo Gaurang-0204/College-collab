@@ -22,7 +22,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <div className="navbar">
-        <img src=" " alt="" className="" />
+        <img src=" ./DYPlogo.png" alt="" className="" />
         <nav>
           <ul>
             <li>Home</li>

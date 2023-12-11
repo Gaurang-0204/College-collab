@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../config/firebase';
+import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
 import { getDoc, doc } from 'firebase/firestore';
-import { db, storage } from '../config/firebase';
+import { db, storage } from '../../config/firebase';
 import { ref, getDownloadURL } from 'firebase/storage';
 
-const HomePage = () => {
+const Popup = () => {
   const userId = localStorage.getItem('userId');
   let navigate = useNavigate();
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -60,12 +60,12 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container">
+    
       <div className="navbar">
-        <img src=" ./DYPlogo.png" alt="" className="" />
+        
         <nav>
           <ul>
-            <li><Link to='/HomePage'>Home </Link></li>
+            <li><Link to='/HomePage'>Home</Link></li>
             <li>About</li>
             <li><Link to='/Profile'> Profile </Link></li>
             <li className='logout'  onClick={logout}>Logout</li>
@@ -119,76 +119,9 @@ const HomePage = () => {
         </nav>
       </div>
 
-      <div className="row">
-        <div className="col">
-          <h1 className="hp">DYPIU</h1>
-          <p className="hpp">
-          D Y Patil International University, Akrudi, Pune is one of the finest private universities in India, which is providing the highly-skilled talent to the nation and overseas. The university has recently become operational as a state private university and offering the best quality higher education in the field of engineering, management, international business, graphic design, biotechnology, journalism, and mass communication.
-          </p>
-          <button type="button">Explore</button>
-        </div>
-        <div className="col">
-          <div className="card card1">
-            <h5><Link to="/club">Clubs</Link></h5>
-            <p>
-              Welcome to different clubs of dypiu, click here for more info.
-            </p>
-          </div>
-          <div className="card card2">
-            <h5><Link to="/Events">Events</Link></h5>
-            <p>
-              Click here to know and join the upcoming events.
-            </p>
-          </div>
-          <div className="card card3">
-            <h5><a href="https://learning.dypiu.ac.in/">Moodle</a></h5>
-            <p>
-              Access your courses here.
-            </p>
-          </div>
-          <div className="card card4">
-            <h5><a href="https://dypiu.collpoll.com/home">Collpoll</a></h5>
-            <p>
-              Check and pay your dues here.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+      
+    
   );
 }
 
-export default HomePage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Popup;

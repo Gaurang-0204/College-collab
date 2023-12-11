@@ -8,7 +8,7 @@ const Profile = () => {
   const userId = localStorage.getItem("userId");
   const [userData, setUserData] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
-
+  
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -35,15 +35,27 @@ const Profile = () => {
         });
     }
   }, [userData]);
+  
+
 
   return (
-    <div>
-      <h1>Profile</h1>
+    
+
+
+
+
+
+    <div className='profile-container '>
+      
       {userData ? (
-        <div>
+        <div className=''>
+          {imageUrl && <img src={imageUrl} className='profile-pic'/>}
           <p>Name: {userData.name}</p>
-          <p>Description: {userData.description}</p>
-          {imageUrl && <img src={imageUrl} className='clubimg'/>}
+          <p>D.O.B: 02-04-2003</p>
+          <p>Contact number:7666142912 </p>
+          <p>Address : srg  dfgbs sg</p>
+          
+          
           {/* Add more properties as needed */}
         </div>
       ) : (

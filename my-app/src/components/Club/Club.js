@@ -3,7 +3,7 @@ import { db } from '../../config/firebase';
 import { collection, getDocs } from 'firebase/firestore'
 import { Link } from 'react-router-dom';
 import '../Login.css';
-
+import Popup from '../Popup/Popup'; 
 
 
 const Club = () => {
@@ -29,10 +29,13 @@ const Club = () => {
     getClubList();
   }, []);
   return (
+
+   
     <div className='clubfirst'>
+       <Popup/>
       {clublist.map((club) => (
         <div>
-          <div> 
+          <div className=''> 
           <Link to={`/Showclub/${club.id}`}> 
                 <h2 onClick={()=> setclubid(club.id)}>{club.name}</h2>
                 </Link>

@@ -9,7 +9,7 @@
 .container{
 	width:100%;
 	height:100vh;
-	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('../../public/homepage_background.PNG');
+	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('C:\Users\saket\Desktop\College-collab\my-app\public\backgroung.jpg');
 	background-position: center;
 	background-size: cover;
 	padding-left: 8%;
@@ -41,7 +41,7 @@ nav ul{
 	width: 320px;
 	max-height: 0px;
 	overflow: hidden;
-    transition: max-height 0.5s;
+	transition: max-height 0.5s;
  }
 
  .sub-menu-wrap.open-menu{
@@ -49,7 +49,7 @@ nav ul{
 	
  }
  .sub-menu{
-	background: #f3ecec;
+	background: #ffffff;
 	padding: 20px;
 	margin: 10px;
  }
@@ -60,22 +60,19 @@ nav ul{
  .user-info{
 	display: flex;
 	align-items: center;
-}
-.logo{
-	width: 50px;
-	cursor: pointer;
-}
-.menu-icon{
-	width: 30px;
-	cursor: pointer;
-	margin-left: 40px;
-}
-nav{
-	flex: 1;
-	text-align: right;
+ }
 
-}
-.sub-menu hr{
+ .user-info h3{
+	font-weight: 500;
+ }
+
+ .user-info img{
+width: 60px;
+border-radius: 50%;
+margin-right: 15px;
+ }
+
+ .sub-menu hr{
 	border: 0;
 	height: 1px;
 	width: 100%;
@@ -115,20 +112,6 @@ nav{
 .sub-menu-link:hover p{
 	font-weight: 600;
  }
-
-.logout {
-    display: inline-block;
-    cursor: pointer;
-    font-size: 14px;
-    text-align: center;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 30px;
-    background-color: white;
-    color: black;
-    transition: background-color 0.3s ease;
-}
-
 .logout:hover {
     background-color: #f2f2f2;
 }
@@ -136,10 +119,33 @@ nav{
 	text-decoration: none;
 	font-size: 30px;
 }
+.profile-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+  }
+  
+  .profile-pic {
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	margin-right: 20px;
+  }
+  
+  .profile-details {
+	max-width: 400px;
+	text-align: left; 
+  }
+  
+  /* Add more styling as needed for details */
+  
 nav ul li{
 	list-style: none;
 	display:inline-block;
 	margin-left: 60px;
+	color: #fff;
+	cursor: pointer;
 }
 nav ul li a {
 	text-decoration: none;
@@ -223,8 +229,6 @@ h5{
 body {
 	font-family: 'Arial', sans-serif;
 	-webkit-font-smoothing: antialiased;
-	background: #808080;
-
 }
 
 ul {
@@ -253,9 +257,9 @@ img {
 
 .showcase {
 	width: 100%;
-	height: 110vh;
-	position: relative;	
-	
+	height: 80vh;
+	position: relative;
+	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('C:\Users\saket\Desktop\College-collab\my-app\public\backgroung.jpg');
 }
 
 .showcase::after {
@@ -277,7 +281,7 @@ img {
 	position: relative;
 	z-index: 2;
 	width: 450px;
-	height: 110vh;
+	height: 80vh;
 	background: rgb(0, 0, 0, 0.65);
 	margin: 0 auto;
 	display: flex;
@@ -419,6 +423,7 @@ input[type=file] {
 }
 
 .signup {
+	height: 110vh;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -450,7 +455,7 @@ footer {
 	position: absolute;
 	margin-top: 50px;
 	z-index: 2;
-	background: rgba(0, 0, 0, 0.65);
+	
 	width: 100%;
 	height: 200px;
 }
@@ -623,45 +628,4 @@ input[type=number], input[type=string] {
 	background-color: #000;
 }
 
-/* Your profile code */
-.profile-container{
-	width:100%;
-	height: 100vh;
-	background-color: red;
-	background-size: cover;
-	background-position: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.profile-box{
-	background: rgb(225, 202, 202);
-	text-align: center;
-	padding: 40px 90px;
-	color: #fff;
-	position: relative;
-	border-radius: 100px;
-
-}
-.profile-menu{
-	width: 25px;
-	position: absolute;
-	left: 40px;
-	top: 40px;
-
-}
-.profile-setting{
-	width: 25px;
-	position: absolute;
-	right: 40px;
-	top: 40px;
-
-}
-.profile-pic{
-	width: 150px;
-	border-radius: 50%;
-	height: auto;
-	right: 100px;
-	padding: 6px;
-	margin-top: 30px;
-}
+/* Your existing CSS code */

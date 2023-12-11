@@ -1,120 +1,59 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { auth, googleProvider } from "../config/firebase";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { db } from "../config/firebase";
-import { collection, where, getDocs,query } from "firebase/firestore";
-import "./Login.css";
-import smallImage from "./GoogleLogo.png";
+import React from 'react';
+import { getDoc, doc } from 'firebase/firestore';
+import { db, storage } from '../config/firebase';
+import { useState, useEffect } from 'react';
+import { ref, getDownloadURL } from 'firebase/storage';
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  let navigate = useNavigate();
+const Profile = () => {
+  const userId = localStorage.getItem("userId");
+  const [userData, setUserData] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
-  const setUserIdInLocalStorage = (userId) => {
-    localStorage.setItem("userId", userId);
-  };
-
-  const signIn = async (e) => {
-    e.preventDefault();
-
-    try {
-      const collectionRef = collection(db, "students");
-      const querySnapshot = await getDocs(
-        query(collectionRef, where("email", "==", email))
-      );
-
-      if (querySnapshot.empty) {
-        console.log("User not found");
-        return;
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const docRef = doc(db, "students", userId);
+        const club = await getDoc(docRef);
+        setUserData(club.data());
+      } catch (error) {
+        console.error('Error fetching club data:', error);
       }
+    };
 
-      const userDoc = querySnapshot.docs[0];
-      const userId = userDoc.id;
+    fetchUserData();
+  }, [userId]);
 
-      await signInWithEmailAndPassword(auth, email, password);
-
-      setUserIdInLocalStorage(userId);
-
-      navigate("/HomePage");
-    } catch (err) {
-      console.error(err);
+  useEffect(() => {
+    if (userData && userData.image) {
+      const imageRef = ref(storage, userData.image);
+      getDownloadURL(imageRef)
+        .then((url) => {
+          setImageUrl(url);
+        })
+        .catch((error) => {
+          console.error('Error fetching image URL: ', error);
+        });
     }
-  };
-
-  const signInWithGoogle = async () => {
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      const googleUser = result.user;
-
-      const collectionRef = collection(db, "students");
-      const querySnapshot = await getDocs(
-        query(collectionRef, where("email", "==", googleUser.email))
-      );
-
-      if (querySnapshot.empty) {
-        console.log("User not found");
-        return;
-      }
-
-      const userDoc = querySnapshot.docs[0];
-      const userId = userDoc.id;
-
-      setUserIdInLocalStorage(userId);
-
-      navigate("/HomePage");
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  }, [userData]);
 
   return (
-    <div id="root">
-      <header className="showcase">
-        <div className="showcase-content">
-          <div className="formm">
-            <form onSubmit={signIn}>
-              <h1>Welcome...</h1>
-              <div className="info">
-                <input
-                  className="email"
-                  type="email"
-                  name="email"
-                  placeholder="Email or phone number"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <br />
-                <input
-                  className="email"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="btn">
-                <button type="submit" className="btn-primary">
-                  Sign In
-                </button>
-              </div>
-              <div className="btn">
-                <button onClick={signInWithGoogle} className="btn-google">
-                  <img src={smallImage} alt="Small Icon" /> Sign In with Google
-                </button>
-              </div>
-            </form>
+    <div className='profile-container'>
+      {imageUrl && <img src={imageUrl} className='profile-pic' />}
+      <div className='profile-details'>
+        {userData ? (
+          <div>
+            <p>Name: {userData.name}</p>
+            <p>D.O.B: 02-04-2003</p>
+            <p>Contact number: 7666142912 </p>
+            <p>Address: srg dfgbs sg</p>
+            {/* Add more properties as needed */}
           </div>
-          <div className="signup">
-            <p>Don't have an account? </p>
-            <Link to="/Signup">Sign up </Link>
-          </div>
-        </div>
-      </header>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
   );
-}
+};
 
-
+export default Profile;

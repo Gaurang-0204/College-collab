@@ -68,7 +68,6 @@ const HomePage = () => {
             <li><Link to='/HomePage'>Home </Link></li>
             <li>About</li>
             <li><Link to='/Profile'> Profile </Link></li>
-            <li className='logout'  onClick={logout}>Logout</li>
           </ul>
           {userData && (
             <div>

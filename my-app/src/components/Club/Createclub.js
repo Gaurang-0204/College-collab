@@ -14,6 +14,7 @@ const Createclub = () => {
   const [newdescription, setdescription] = useState('');
   const [imageUpload, setImageUpload] = useState(null);
   const pathsPrefix = `club/${v4()}-`;
+  const [leader, setleader] = useState('');
 
   const clubCollectionRef = collection(db, 'club');
 
@@ -48,6 +49,7 @@ const Createclub = () => {
         admin: clubAdmin,
         description: newdescription,
         images: imagePaths, // Store the array of paths in the Firestore document
+        leader: leader,
       });
 
       console.log('Document written with ID: ', docRef.id);
@@ -89,7 +91,14 @@ const Createclub = () => {
           type="string"
           value={newdescription}
           onChange={(e) => setdescription(e.target.value)}
-        /><br/>
+        />
+        <input
+          placeholder="setleader "
+          type="string"
+          value={leader}
+          onChange={(e) => setleader(e.target.value)}
+        />
+        <br/>
         <input type="file" className='file-input' multiple onChange={(event) => setImageUpload(event.target.files)} />
       </div><br/>
       <button className='btn-primary' onClick={onSubmitClub}>Submit Club</button>

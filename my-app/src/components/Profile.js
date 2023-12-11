@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 import { getDoc, doc } from 'firebase/firestore';
-import { db,storage } from '../config/firebase';
-import { useState,useEffect } from 'react';
+import { db, storage } from '../config/firebase';
+import { useState, useEffect } from 'react';
 import { ref, getDownloadURL } from 'firebase/storage';
 
 const Profile = () => {
   const userId = localStorage.getItem("userId");
   const [userData, setUserData] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
-  
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -35,36 +35,24 @@ const Profile = () => {
         });
     }
   }, [userData]);
-  
-
 
   return (
-    
-
-
-
-
-
-    <div className='profile-container '>
-      
-      {userData ? (
-        <div className=''>
-          {imageUrl && <img src={imageUrl} className='profile-pic'/>}
-          <p>Name: {userData.name}</p>
-          <p>D.O.B: 02-04-2003</p>
-          <p>Contact number:7666142912 </p>
-          <p>Address : srg  dfgbs sg</p>
-          
-          
-          {/* Add more properties as needed */}
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+    <div className='profile-container'>
+      {imageUrl && <img src={imageUrl} className='profile-pic' />}
+      <div className='profile-details'>
+        {userData ? (
+          <div>
+            <p>Name: {userData.name}</p><br></br>
+            <p>D.O.B: 02-04-2003</p><br></br>
+            <p>Contact number: 7666142912 </p><br></br>
+            <p>Address: srg dfgbs sg</p><br></br>
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
   );
 };
-  
 
-
-export default Profile
+export default Profile;
